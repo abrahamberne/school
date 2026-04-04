@@ -66,7 +66,8 @@ footer {
   position:absolute; bottom:20px; width:100%; text-align:center; opacity:0.6;
 }
 footer a {color:white; margin:0 10px; text-decoration:none;}
-@keyframes fadeUp {from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);}}
+@keyframes fadeUp {from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);}
+}
 </style>
 </head>
 
@@ -103,7 +104,7 @@ footer a {color:white; margin:0 10px; text-decoration:none;}
 </footer>
 
 <script>
-function openForm() {document.getElementById("modal").style.display = "flex";}
+function openForm(){document.getElementById("modal").style.display = "flex";}
 
 document.getElementById("leadForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -113,7 +114,7 @@ document.getElementById("leadForm").addEventListener("submit", function(e){
   let phone = document.getElementById("phone").value;
   let problem = document.getElementById("problem").value;
 
-  // 🔗 Google Form submission (via iframe invisible)
+  // 🔗 Soumission Google Form via iframe invisible
   let formURL = "https://docs.google.com/forms/d/e/aSHS2CfPVP4gh7M18/formResponse?" +
     "entry.111=" + encodeURIComponent(prenom) +
     "&entry.222=" + encodeURIComponent(email) +
@@ -125,15 +126,17 @@ document.getElementById("leadForm").addEventListener("submit", function(e){
   iframe.src = formURL;
   document.body.appendChild(iframe);
 
-  // 📲 WhatsApp (mobile + desktop)
+  // 📲 WhatsApp pour ceux qui ont WhatsApp
   let msg = `Bonjour, je m'appelle ${prenom}. Mon problème est : ${problem}.`;
   let isMobile = /iPhone|Android/i.test(navigator.userAgent);
-  let whatsappURL = isMobile 
-    ? "https://wa.me/33769696285?text=" + encodeURIComponent(msg)
-    : "https://web.whatsapp.com/send?phone=33769696285&text=" + encodeURIComponent(msg);
-  window.open(whatsappURL, "_blank");
+  if(isMobile || phone){ // on ouvre WhatsApp seulement si possible
+    let whatsappURL = isMobile 
+      ? "https://wa.me/33769696285?text=" + encodeURIComponent(msg)
+      : "https://web.whatsapp.com/send?phone=33769696285&text=" + encodeURIComponent(msg);
+    window.open(whatsappURL, "_blank");
+  }
 
-  // Show Thank You
+  //  Page de remerciement
   document.getElementById("modal").style.display = "none";
   document.getElementById("main").style.display = "none";
   document.getElementById("thank").style.display = "flex";
