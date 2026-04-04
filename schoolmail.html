@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bassiste Pro en 90 jours</title>
+
+<title>Bassiste Pro</title>
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4Y684BHY"></script>
@@ -14,106 +15,123 @@ gtag('js', new Date());
 gtag('config', 'G-LG4Y684BHY');
 </script>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
     margin:0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
-    color:white;
-    text-align:center;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.container {
-    padding:80px 20px;
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #0f0f1c, #000);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* HERO */
+.hero {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
 }
 
 h1 {
-    font-size:42px;
-    margin-bottom:10px;
+    font-size:48px;
+    font-weight:600;
+    max-width:700px;
 }
 
-.subtitle {
-    opacity:0.8;
-    margin-bottom:40px;
+.sub {
+    margin-top:15px;
+    opacity:0.7;
 }
 
-.cta-btn {
-    background: linear-gradient(135deg, #6a00ff, #9d4edd);
-    border:none;
-    padding:18px 35px;
+/* CTA PREMIUM */
+.cta {
+    margin-top:40px;
+    padding:18px 40px;
     border-radius:50px;
-    color:white;
+    border:none;
     font-size:18px;
     cursor:pointer;
-    transition:0.3s;
+    background: linear-gradient(135deg, #6a00ff, #00d4ff);
+    color:white;
+    transition: all 0.3s ease;
 }
 
-.cta-btn:hover {
-    transform:scale(1.05);
-    box-shadow:0 0 20px rgba(157,78,221,0.7);
+.cta:hover {
+    transform: scale(1.08);
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* FORM */
+/* MODAL GLASS */
 .modal {
     position:fixed;
-    top:0; left:0;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.8);
+    backdrop-filter: blur(20px);
+    background: rgba(0,0,0,0.6);
     display:none;
     justify-content:center;
     align-items:center;
 }
 
-.form-box {
-    background:#111;
+.form {
+    background: rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
     padding:30px;
     border-radius:20px;
     width:90%;
     max-width:400px;
-    animation:fadeIn 0.4s ease;
+    animation:fadeUp 0.5s ease;
 }
 
 input, textarea {
     width:100%;
-    padding:12px;
     margin:10px 0;
-    border:none;
+    padding:14px;
     border-radius:10px;
-    outline:none;
+    border:none;
+    background:rgba(255,255,255,0.08);
+    color:white;
 }
 
-.submit-btn {
+button.submit {
     width:100%;
-    background:#9d4edd;
     padding:15px;
     border:none;
     border-radius:30px;
+    background: linear-gradient(135deg, #00d4ff, #6a00ff);
     color:white;
     cursor:pointer;
 }
 
-/* THANK YOU PAGE */
-.thank-you {
+/* THANK YOU */
+.thank {
     display:none;
-    padding:80px 20px;
-}
-
-a.link {
-    color:#9d4edd;
-    text-decoration:none;
-    font-weight:bold;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
 }
 
 /* FOOTER */
 footer {
-    margin-top:50px;
-    padding:20px;
-    font-size:14px;
-    opacity:0.7;
+    position:absolute;
+    bottom:20px;
+    width:100%;
+    text-align:center;
+    opacity:0.6;
 }
 
 footer a {
@@ -122,8 +140,8 @@ footer a {
     text-decoration:none;
 }
 
-@keyframes fadeIn {
-    from {opacity:0; transform:translateY(20px);}
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(40px);}
     to {opacity:1; transform:translateY(0);}
 }
 </style>
@@ -131,37 +149,34 @@ footer a {
 
 <body>
 
-<div class="container" id="mainContent">
+<div class="hero" id="main">
     <h1>Comment devenir un Bassiste Pro en 90 jours</h1>
-    <p class="subtitle">Passe de débutant à musicien solide avec une méthode structurée</p>
-
-    <button class="cta-btn" onclick="openForm()">Commencer maintenant</button>
+    <p class="sub">Une méthode claire pour passer au niveau supérieur rapidement</p>
+    <button class="cta" onclick="openForm()">Accéder maintenant</button>
 </div>
 
-<!-- FORM MODAL -->
 <div class="modal" id="modal">
-    <div class="form-box">
+    <div class="form">
         <form id="leadForm">
             <input type="text" id="prenom" placeholder="Prénom" required>
             <input type="email" id="email" placeholder="Email" required>
             <input type="tel" id="phone" placeholder="Téléphone" required>
-            <textarea id="problem" placeholder="Quel est ton plus gros problème à la basse ?" required></textarea>
-            <button type="submit" class="submit-btn">Valider</button>
+            <textarea id="problem" placeholder="Ton problème à la basse ?" required></textarea>
+            <button class="submit">Continuer</button>
         </form>
     </div>
 </div>
 
-<!-- THANK YOU -->
-<div class="thank-you" id="thankYou">
+<div class="thank" id="thank">
     <h2>Merci 🙌</h2>
-    <p>Accède maintenant à la formation :</p>
-    <a href="http://abrahamberne.com/" class="link" target="_blank">Voir la formation</a>
+    <p>Ta progression commence ici :</p>
+    <a href="http://abrahamberne.com/" target="_blank">Accéder à la formation</a>
 </div>
 
 <footer>
-    <a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Mentions légales</a> |
-    <a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Politique de confidentialité</a> |
-    <a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Contact</a>
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Mentions légales</a> |
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Politique de confidentialité</a> |
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Contact</a>
 </footer>
 
 <script>
@@ -173,19 +188,25 @@ document.getElementById("leadForm").addEventListener("submit", function(e){
     e.preventDefault();
 
     let prenom = document.getElementById("prenom").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
     let problem = document.getElementById("problem").value;
 
-    let message = `Bonjour, je m'appelle ${prenom}. Mon problème à la basse est : ${problem}. Je veux devenir bassiste pro.`;
+    // 🔗 GOOGLE FORM (REMPLACE AVEC TON LIEN)
+    let googleFormURL = "https://docs.google.com/forms/d/e/XXXXX/formResponse?entry.111=" 
+    + prenom + "&entry.222=" + email + "&entry.333=" + phone + "&entry.444=" + problem;
 
-    let whatsappURL = `https://wa.me/33769696285?text=${encodeURIComponent(message)}`;
+    fetch(googleFormURL, { method: "POST", mode: "no-cors" });
 
-    // Ouvre WhatsApp
-    window.open(whatsappURL, "_blank");
+    // 📲 WHATSAPP
+    let msg = `Bonjour, je m'appelle ${prenom}. Mon problème est : ${problem}.`;
+    let whatsapp = "https://wa.me/33769696285?text=" + encodeURIComponent(msg);
 
-    // Cache formulaire + affiche page merci
+    window.open(whatsapp, "_blank");
+
     document.getElementById("modal").style.display = "none";
-    document.getElementById("mainContent").style.display = "none";
-    document.getElementById("thankYou").style.display = "block";
+    document.getElementById("main").style.display = "none";
+    document.getElementById("thank").style.display = "flex";
 });
 </script>
 
