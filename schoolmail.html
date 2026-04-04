@@ -1,158 +1,193 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bassiste Pro en 90 jours</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bassiste Pro en 90 jours</title>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
-    gtag('js', new Date());
-    gtag('config', 'G-LG4Y684BHY');
-  </script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4Y684BHY"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LG4Y684BHY');
+</script>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #111, #000);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      overflow: hidden;
-    }
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    h1 {
-      font-size: 2.2rem;
-      max-width: 650px;
-      animation: fadeIn 1.2s ease forwards;
-    }
+<style>
+body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+    color:white;
+    text-align:center;
+}
 
-    .subtitle {
-      opacity: 0;
-      margin-bottom: 30px;
-      animation: fadeIn 2s ease forwards;
-    }
+.container {
+    padding:80px 20px;
+}
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      width: 90%;
-      max-width: 400px;
-      transform: translateY(30px);
-      opacity: 0;
-      animation: fadeUp 1.5s ease forwards;
-    }
+h1 {
+    font-size:42px;
+    margin-bottom:10px;
+}
 
-    input, textarea {
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      font-size: 14px;
-      outline: none;
-    }
+.subtitle {
+    opacity:0.8;
+    margin-bottom:40px;
+}
 
-    textarea {
-      resize: none;
-      height: 90px;
-    }
+.cta-btn {
+    background: linear-gradient(135deg, #6a00ff, #9d4edd);
+    border:none;
+    padding:18px 35px;
+    border-radius:50px;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
 
-    button {
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: linear-gradient(45deg, #25D366, #1ebe5d);
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+.cta-btn:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(157,78,221,0.7);
+}
 
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(37,211,102,0.3);
-    }
+/* FORM */
+.modal {
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
 
-    footer {
-      position: absolute;
-      bottom: 10px;
-      font-size: 12px;
-    }
+.form-box {
+    background:#111;
+    padding:30px;
+    border-radius:20px;
+    width:90%;
+    max-width:400px;
+    animation:fadeIn 0.4s ease;
+}
 
-    footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 5px;
-      opacity: 0.7;
-    }
+input, textarea {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    outline:none;
+}
 
-    @keyframes fadeIn {
-      from {opacity:0; transform: translateY(-20px);} 
-      to {opacity:1; transform: translateY(0);} 
-    }
+.submit-btn {
+    width:100%;
+    background:#9d4edd;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    color:white;
+    cursor:pointer;
+}
 
-    @keyframes fadeUp {
-      from {opacity:0; transform: translateY(40px);} 
-      to {opacity:1; transform: translateY(0);} 
-    }
-  </style>
+/* THANK YOU PAGE */
+.thank-you {
+    display:none;
+    padding:80px 20px;
+}
+
+a.link {
+    color:#9d4edd;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer {
+    margin-top:50px;
+    padding:20px;
+    font-size:14px;
+    opacity:0.7;
+}
+
+footer a {
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
+
 <body>
 
-  <h1>Comment devenir un Bassiste Pro en 90 jours (même en partant de zéro)</h1>
-  <div class="subtitle">Sans théorie compliquée. Juste des résultats.</div>
+<div class="container" id="mainContent">
+    <h1>Comment devenir un Bassiste Pro en 90 jours</h1>
+    <p class="subtitle">Passe de débutant à musicien solide avec une méthode structurée</p>
 
-  <form id="leadForm">
-    <input type="text" id="prenom" placeholder="Prénom" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="tel" id="phone" placeholder="Téléphone" required>
-    <textarea id="problem" placeholder="Ton plus gros problème à la basse ?" required></textarea>
-    <button type="submit">Commencer sur WhatsApp</button>
-  </form>
+    <button class="cta-btn" onclick="openForm()">Commencer maintenant</button>
+</div>
 
-  <footer>
+<!-- FORM MODAL -->
+<div class="modal" id="modal">
+    <div class="form-box">
+        <form id="leadForm">
+            <input type="text" id="prenom" placeholder="Prénom" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Téléphone" required>
+            <textarea id="problem" placeholder="Quel est ton plus gros problème à la basse ?" required></textarea>
+            <button type="submit" class="submit-btn">Valider</button>
+        </form>
+    </div>
+</div>
+
+<!-- THANK YOU -->
+<div class="thank-you" id="thankYou">
+    <h2>Merci 🙌</h2>
+    <p>Accède maintenant à la formation :</p>
+    <a href="http://abrahamberne.com/" class="link" target="_blank">Voir la formation</a>
+</div>
+
+<footer>
     <a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Mentions légales</a> |
     <a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Politique de confidentialité</a> |
     <a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Contact</a>
-  </footer>
+</footer>
 
-  <script>
-    document.getElementById("leadForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+<script>
+function openForm() {
+    document.getElementById("modal").style.display = "flex";
+}
 
-      const prenom = document.getElementById("prenom").value;
-      const email = document.getElementById("email").value;
-      const phone = document.getElementById("phone").value;
-      const problem = document.getElementById("problem").value;
+document.getElementById("leadForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-      // Simuler double opt-in (stockage local avant validation)
-      localStorage.setItem("leadData", JSON.stringify({prenom, email, phone, problem}));
+    let prenom = document.getElementById("prenom").value;
+    let problem = document.getElementById("problem").value;
 
-      alert("Confirme ton inscription via WhatsApp pour valider.");
+    let message = `Bonjour, je m'appelle ${prenom}. Mon problème à la basse est : ${problem}. Je veux devenir bassiste pro.`;
 
-      const message = `Bonjour, je m'appelle ${prenom}%0AEmail: ${email}%0ATéléphone: ${phone}%0AProblème: ${problem}`;
+    let whatsappURL = `https://wa.me/33769696285?text=${encodeURIComponent(message)}`;
 
-      const whatsappNumber = "+33769696285"; // REMPLACE
+    // Ouvre WhatsApp
+    window.open(whatsappURL, "_blank");
 
-      // Tracking conversion
-      gtag('event', 'conversion', {
-        'event_category': 'lead',
-        'event_label': 'whatsapp_click'
-      });
-
-      window.location.href = `https://wa.me/${whatsappNumber}?text=${message}`;
-    });
-  </script>
+    // Cache formulaire + affiche page merci
+    document.getElementById("modal").style.display = "none";
+    document.getElementById("mainContent").style.display = "none";
+    document.getElementById("thankYou").style.display = "block";
+});
+</script>
 
 </body>
 </html>
