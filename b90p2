@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation Bassiste Pro en 90 jours</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e2e8f0;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.phone {
+    margin-top:5px;
+    font-size:14px;
+    opacity:0.9;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* TITRE */
+.main-title {
+    text-align: center;
+    font-size: 38px;
+    margin: 40px 0 20px;
+    font-weight: 700;
+}
+
+/* VIDEO */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 30px 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.video-container iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* CTA BUTTON */
+.center-button {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.pay-button {
+    background: linear-gradient(135deg, #10b981, #22c55e);
+    color: white;
+    padding: 18px 45px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(16,185,129,0.4);
+}
+
+.pay-button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 15px 40px rgba(16,185,129,0.7);
+}
+
+/* TEXT */
+h2 {
+    font-size: 26px;
+    margin-top: 40px;
+    color: #22c55e;
+}
+
+h3 {
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+p {
+    margin: 15px 0;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* SEPARATOR */
+.separator {
+    margin: 40px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* FOOTER */
+footer {
+    background: #020617;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer a {
+    color: #10b981;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 26px;
+    }
+
+    .pay-button {
+        font-size: 18px;
+        padding: 14px 30px;
+    }
+
+    header h1 {
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Reçois la formation complète</h1>
+    <div class="phone">📞 +33 7 69 69 62 85</div>
+</header>
+
+<div class="container">
+
+<h1 class="main-title">
+Comment devenir un Bassiste Pro en 90 jours même si tu es débutant
+</h1>
+
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/KyIO63YjPYk" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class="center-button">
+<a href="https://www.paypal.com/ncp/payment/J92XKA4YNTM82" class="pay-button">
+🎸 Clique ici pour recevoir la formation
+</a>
+</div>
+
+<h2>⚠️ Le vrai prix est bien plus élevé que ce que tu payes aujourd’hui</h2>
+
+<p>
+🔥 Offre spéciale : <b>3900 FCFA</b> au lieu de <s>47000 FCFA</s>  
+<br><br>
+Accès complet à la formation Bassiste Pro + réponses personnalisées en vidéo à toutes tes questions.
+</p>
+
+<div class="separator"></div>
+
+<h3>🌍 Afrique de l’Ouest</h3>
+<p>
+Paiement via <b>Wave ou Orange Money</b> au :  
+<strong>+2250708400027</strong>
+</p>
+
+<p>
+Après paiement, envoie une capture au  
+<strong>+33 7 69 69 62 85</strong> pour recevoir ton accès immédiatement.
+</p>
+
+<div class="separator"></div>
+
+<h3>🌍 Autres pays africains</h3>
+<p>
+Paiement via Western Union ou RIA.  
+Contacte directement :
+<strong>+33 7 69 69 62 85</strong>
+</p>
+
+<div class="separator"></div>
+
+<h3>🌎 Europe / Amérique / Canada / Asie</h3>
+
+<div class="center-button">
+<a href="https://www.paypal.com/ncp/payment/J92XKA4YNTM82" class="pay-button">
+🎓 Accéder à la formation
+</a>
+</div>
+
+</div>
+
+<footer>
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale" target="_blank">Mentions légales</a> |
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale" target="_blank">Politique de confidentialité</a> |
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale" target="_blank">Contact</a>
+</footer>
+
+</body>
+</html>
