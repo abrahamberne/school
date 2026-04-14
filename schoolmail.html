@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bassiste Pro - 90 jours</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4Y684BHY"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LG4Y684BHY');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Inter', sans-serif; background: radial-gradient(circle at top, #0f0f1c, #000); color:white; overflow-x:hidden;}
+
+/* HERO */
+.hero {height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:20px;}
+h1 {font-size:48px; font-weight:600; max-width:700px;}
+.sub {margin-top:15px; opacity:0.7;}
+.cta {margin-top:40px; padding:18px 40px; border-radius:50px; border:none; font-size:18px; cursor:pointer; background: linear-gradient(135deg, #6a00ff, #00d4ff); color:white; transition: all 0.3s ease;}
+.cta:hover {transform: scale(1.08); box-shadow:0 20px 40px rgba(0,0,0,0.5);}
+
+/* MODAL GLASS */
+.modal {position:fixed; top:0; left:0; width:100%; height:100%; backdrop-filter: blur(20px); background: rgba(0,0,0,0.6); display:none; justify-content:center; align-items:center;}
+.form {background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:30px; border-radius:20px; width:90%; max-width:400px; animation:fadeUp 0.5s ease;}
+input, textarea {width:100%; margin:10px 0; padding:14px; border-radius:10px; border:none; background:rgba(255,255,255,0.08); color:white;}
+button.submit {width:100%; padding:15px; border:none; border-radius:30px; background: linear-gradient(135deg, #00d4ff, #6a00ff); color:white; cursor:pointer;}
+
+/* THANK YOU */
+.thank {display:none; height:100vh; justify-content:center; align-items:center; flex-direction:column; text-align:center;}
+
+/* FOOTER */
+footer {position:absolute; bottom:20px; width:100%; text-align:center; opacity:0.6;}
+footer a {color:white; margin:0 10px; text-decoration:none;}
+
+@keyframes fadeUp {from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);}}
+</style>
+</head>
+
+<body>
+
+<div class="hero" id="main">
+    <h1>je repond à toutes tes questions sur whatsApp</h1>
+    <p class="sub">je t'aide à devenir un bassiste pro en 90 jours </p>
+    <button class="cta" onclick="openForm()">Clique ici maintenant </button>
+</div>
+
+<!-- MODAL FORM -->
+<div class="modal" id="modal">
+    <div class="form">
+        <form id="leadForm">
+            <input type="text" id="prenom" placeholder="Prénom" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Téléphone" required>
+            <textarea id="problem" placeholder="Ton problème à la basse ?" required></textarea>
+            <button class="submit">Continuer</button>
+        </form>
+    </div>
+</div>
+
+<!-- THANK YOU -->
+<div class="thank" id="thank">
+    <h2>Merci 🙌</h2>
+    <p>Ta progression commence ici :</p>
+    <a href="http://abrahamberne.com/" target="_blank">Accéder à la formation</a>
+</div>
+
+<footer>
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Mentions légales</a> |
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Politique de confidentialité</a> |
+<a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale">Contact</a>
+</footer>
+
+<script>
+function openForm() {
+    document.getElementById("modal").style.display = "flex";
+}
+
+document.getElementById("leadForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let prenom = document.getElementById("prenom").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let problem = document.getElementById("problem").value;
+
+    // 🔗 GOOGLE FORM - remplacer par ton vrai lien
+    let googleFormURL = "https://docs.google.com/forms/d/e/XXXXX/formResponse?" +
+        "entry.111=" + encodeURIComponent(prenom) +
+        "&entry.222=" + encodeURIComponent(email) +
+        "&entry.333=" + encodeURIComponent(phone) +
+        "&entry.444=" + encodeURIComponent(problem);
+
+    // Envoi invisible
+    let iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = googleFormURL;
+    document.body.appendChild(iframe);
+
+    // 📲 WHATSAPP mobile/desktop
+    let msg = `Bonjour, je m'appelle ${prenom} (${email}). Mon problème à la basse : ${problem}.`;
+    let isMobile = /iPhone|Android/i.test(navigator.userAgent);
+    let whatsappURL = isMobile
+        ? "https://wa.me/33769696285?text=" + encodeURIComponent(msg)
+        : "https://web.whatsapp.com/send?phone=33769696285&text=" + encodeURIComponent(msg);
+
+    window.open(whatsappURL, "_blank");
+
+    // Page de remerciement
+    document.getElementById("modal").style.display = "none";
+    document.getElementById("main").style.display = "none";
+    document.getElementById("thank").style.display = "flex";
+});
+</script>
+
+</body>
+</html>
