@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>UltraBasse Academy — Apprends la guitare basse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       IDENTITÉ VISUELLE — COULEURS OR CONSERVÉES
+       POLICE : Outfit + Plus Jakarta Sans
+       ============================================================ */
+    :root {
+      --primary: #c9a24b;
+      --primary-dark: #b08d3a;
+      --primary-light: #ddb85e;
+      --primary-glow: rgba(201, 162, 75, 0.35);
+      --accent: #ff6b35;
+      --accent-dark: #e85520;
+      --accent-light: #ff8555;
+      --accent-glow: rgba(255, 107, 53, 0.4);
+      --bg-dark: #0a0a0d;
+      --bg-panel: #131318;
+      --bg-card: #1a1a22;
+      --bg-card-hover: #22222c;
+      --text-light: #f5f5fa;
+      --text-muted: #8a8a99;
+      --border: #26262f;
+      --border-light: #32323e;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --radius-lg: 20px;
+      --shadow: 0 10px 40px rgba(0,0,0,0.5);
+      --shadow-glow: 0 0 30px rgba(201, 162, 75, 0.2);
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 15% 5%, rgba(201, 162, 75, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 95%, rgba(255, 107, 53, 0.04) 0%, transparent 45%);
+      background-attachment: fixed;
+      color: var(--text-light);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover { color: var(--primary-light); }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      letter-spacing: -0.02em;
+    }
+
+    /* ============================================================
+       BOUTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: center;
+      text-decoration: none;
+      line-height: 1.3;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    .btn:hover::before { left: 100%; }
+    .btn:active { transform: scale(0.97); }
+    .btn:disabled, .btn.disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+      transform: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: #0a0a0d;
+      box-shadow: 0 4px 18px rgba(201, 162, 75, 0.25);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 6px 26px rgba(201, 162, 75, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: #0a0a0d;
+      box-shadow: 0 6px 22px rgba(201, 162, 75, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-coaching {
+      background: linear-gradient(135deg, var(--accent-light), var(--accent) 55%, var(--accent-dark));
+      color: #ffffff;
+      font-size: 1.15rem;
+      padding: 20px 34px;
+      width: 100%;
+      border-radius: var(--radius);
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      box-shadow: 0 8px 28px rgba(255, 107, 53, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      border: none;
+    }
+    .btn-coaching:hover {
+      box-shadow: 0 12px 44px rgba(255, 107, 53, 0.65), inset 0 1px 0 rgba(255,255,255,0.4);
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #ff8555, #ff6b35 55%, #e85520);
+    }
+    .btn-coaching:active { transform: scale(0.98); }
+
+    .btn-shop {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: #0a0a0d;
+      font-size: 1.02rem;
+      padding: 16px 32px;
+      width: 100%;
+      border-radius: var(--radius);
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 22px rgba(201, 162, 75, 0.28);
+      font-family: var(--font-display);
+      text-transform: uppercase;
+    }
+    .btn-shop:hover {
+      box-shadow: 0 10px 32px rgba(201, 162, 75, 0.48);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       STRUCTURE PRINCIPALE
+       ============================================================ */
+    .app-wrapper {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .sidebar {
+      width: 268px;
+      min-width: 268px;
+      background: linear-gradient(180deg, var(--bg-panel) 0%, #0e0e13 100%);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 100;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar-header {
+      padding: 26px 22px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      line-height: 1.1;
+    }
+    .logo:hover { color: var(--primary-light); }
+    .logo-icon {
+      font-size: 1.7rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 8px rgba(201, 162, 75, 0.4));
+    }
+    .logo-sub {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 3px;
+      margin-top: 3px;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-body);
+      position: relative;
+    }
+    .nav-link:hover {
+      background: rgba(201, 162, 75, 0.08);
+      color: var(--primary);
+    }
+    .nav-link.active {
+      background: linear-gradient(90deg, rgba(201, 162, 75, 0.18), rgba(201, 162, 75, 0.04));
+      color: var(--primary);
+    }
+    .nav-link.active::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 15%;
+      height: 70%; width: 3px;
+      background: var(--primary);
+      border-radius: 0 3px 3px 0;
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+    .nav-icon {
+      font-size: 1.15rem;
+      width: 22px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .sidebar-footer {
+      padding: 18px 22px;
+      border-top: 1px solid var(--border);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .mobile-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(19, 19, 24, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    .mobile-header .logo { font-size: 1.05rem; }
+    .mobile-header .logo-icon { font-size: 1.4rem; }
+
+    .menu-toggle {
+      background: rgba(201, 162, 75, 0.1);
+      border: 1px solid rgba(201, 162, 75, 0.25);
+      color: var(--primary);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      line-height: 1;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .menu-toggle:hover { background: rgba(201, 162, 75, 0.2); }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      z-index: 150;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .overlay.active { display: block; opacity: 1; }
+
+    .main-content {
+      flex: 1;
+      padding: 28px 40px 48px;
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .page-section { display: none; animation: fadeIn 0.4s ease; }
+    .page-section.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       HERO — TITRE CENTRÉ
+       ============================================================ */
+    .hero {
+      padding: 4px 0 18px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .hero h1 .accent {
+      color: var(--primary);
+    }
+    .hero p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      line-height: 1.5;
+      max-width: 100%;
+    }
+
+    /* ============================================================
+       LECTEUR VIDÉO — TAILLE IDENTIQUE À YOUTUBE (INCHANGÉE)
+       ============================================================ */
+    .video-section {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #000;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+      position: relative;
+    }
+
+    .video-container iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-panel));
+      color: var(--text-muted);
+      text-align: center;
+      padding: 24px;
+      gap: 10px;
+    }
+    .video-placeholder .icon { font-size: 2.8rem; opacity: 0.5; }
+    .video-placeholder p { font-size: 0.95rem; max-width: 440px; }
+
+    .lesson-info {
+      margin-top: 22px;
+      padding: 20px 22px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .lesson-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 24px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+    }
+    .badge-debutant {
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(39, 174, 96, 0.3);
+    }
+    .badge-intermediaire {
+      background: linear-gradient(135deg, #e67e22, #ca6f1e);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(230, 126, 34, 0.3);
+    }
+    .badge-avance {
+      background: linear-gradient(135deg, #c0392b, #96281b);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(192, 57, 43, 0.3);
+    }
+
+    .lesson-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .lesson-desc { font-size: 0.98rem; color: var(--text-muted); margin-bottom: 4px; }
+
+    .no-experience {
+      font-size: 0.8rem;
+      color: #2ecc71;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .lesson-nav {
+      display: flex;
+      gap: 14px;
+      margin-top: 22px;
+      width: 100%;
+    }
+    .lesson-nav .btn {
+      flex: 1;
+      padding: 15px 18px;
+      font-size: 0.88rem;
+      letter-spacing: 0.8px;
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       COACHING — ESPACEMENT AUGMENTÉ
+       ============================================================ */
+    .coaching-block { margin-top: 32px; text-align: center; }
+    .coaching-block .btn-coaching {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+    }
+    .coaching-caption {
+      margin-top: 32px;      /* Espace augmenté entre le bouton et le texte */
+      font-size: 0.98rem;
+      color: var(--text-light);
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .coaching-caption .strong {
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+      margin-top: 10px;
+      font-size: 1.05rem;
+    }
+    .coaching-caption .emph {
+      font-weight: 700;
+      color: var(--text-light);
+    }
+
+    .shop-block { margin-top: 26px; text-align: center; }
+    .shop-block .btn-shop {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    /* ============================================================
+       PAGE COURS — ACCORDÉON
+       ============================================================ */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .accordion-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .accordion-item:hover {
+      border-color: var(--border-light);
+    }
+    .accordion-item.open {
+      border-color: rgba(201, 162, 75, 0.4);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(201, 162, 75, 0.15);
+    }
+
+    .accordion-header {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text-light);
+      font-family: var(--font-body);
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .accordion-header:hover {
+      background: rgba(201, 162, 75, 0.04);
+    }
+
+    .acc-num {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+      color: #0a0a0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      font-family: var(--font-display);
+      box-shadow: 0 3px 10px rgba(201, 162, 75, 0.3);
+    }
+    .accordion-item.open .acc-num {
+      box-shadow: 0 4px 16px rgba(201, 162, 75, 0.5);
+    }
+
+    .acc-main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .acc-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-light);
+      line-height: 1.3;
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+    }
+
+    .acc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .acc-tags .badge {
+      font-size: 0.62rem;
+      padding: 4px 10px;
+      letter-spacing: 1px;
+    }
+    .acc-duration {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .acc-chevron {
+      flex-shrink: 0;
+      color: var(--primary);
+      font-size: 1.1rem;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      line-height: 1;
+    }
+    .accordion-item.open .acc-chevron {
+      transform: rotate(180deg);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .accordion-item.open .accordion-body {
+      max-height: 500px;
+    }
+
+    .acc-content {
+      padding: 4px 22px 22px 76px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .acc-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .acc-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .acc-actions .btn {
+      flex: 1;
+      min-width: 160px;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      font-family: var(--font-display);
+      letter-spacing: 0.8px;
+    }
+
+    /* ============================================================
+       FOOTER — 3 LIENS SUR UNE SEULE LIGNE
+       ============================================================ */
+    .site-footer {
+      margin-top: auto;
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-panel);
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px 22px;
+      overflow-x: auto;
+      padding: 4px 0;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .footer-links::-webkit-scrollbar { display: none; }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      font-weight: 500;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .footer-links a:hover { color: var(--primary); }
+
+    /* ============================================================
+       RESPONSIVE MOBILE
+       ============================================================ */
+    @media (max-width: 860px) {
+      .sidebar {
+        position: fixed;
+        top: 0; left: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        width: 285px;
+        min-width: 285px;
+        box-shadow: 8px 0 40px rgba(0,0,0,0.7);
+        z-index: 300;
+      }
+      .sidebar.open { transform: translateX(0); }
+
+      .mobile-header { display: flex; }
+      .app-wrapper { flex-direction: column; }
+      .main-content { padding: 18px 16px 36px; }
+
+      .hero { padding: 2px 0 14px; }
+      .hero h1 { font-size: 1.15rem; }
+      .hero p { font-size: 0.88rem; }
+
+      .lesson-title { font-size: 1.2rem; }
+
+      .lesson-nav { flex-direction: column; gap: 10px; }
+      .lesson-nav .btn {
+        width: 100%;
+        padding: 14px 12px;
+        font-size: 0.82rem;
+      }
+
+      .btn-coaching { font-size: 1rem; padding: 18px 20px; letter-spacing: 1px; }
+      .btn-shop { font-size: 0.92rem; padding: 15px 20px; }
+
+      .lesson-info { padding: 16px 16px; }
+
+      .coaching-caption { font-size: 0.92rem; margin-top: 26px; }
+      .coaching-caption .strong { font-size: 1rem; }
+
+      .accordion-header { padding: 16px 16px; gap: 12px; }
+      .acc-num { width: 34px; height: 34px; font-size: 0.85rem; }
+      .acc-title { font-size: 0.95rem; }
+      .acc-content { padding: 4px 16px 18px 62px; }
+      .acc-actions .btn { min-width: 100%; }
+
+      .footer-links { gap: 6px 14px; }
+      .footer-links a { font-size: 0.74rem; }
+    }
+
+    @media (max-width: 400px) {
+      .main-content { padding: 14px 12px 32px; }
+      .hero h1 { font-size: 1.05rem; }
+      .hero p { font-size: 0.82rem; }
+      .lesson-title { font-size: 1.08rem; }
+      .lesson-desc { font-size: 0.88rem; }
+      .btn-coaching { font-size: 0.88rem; padding: 15px 14px; letter-spacing: 0.5px; }
+      .coaching-caption { font-size: 0.88rem; margin-top: 22px; }
+      .coaching-caption .strong { font-size: 0.95rem; }
+      .acc-content { padding-left: 16px; }
+      .footer-links { gap: 4px 10px; }
+      .footer-links a { font-size: 0.68rem; }
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+
+    .btn:focus-visible,
+    .nav-link:focus-visible,
+    .menu-toggle:focus-visible,
+    .accordion-header:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== MOBILE HEADER ========== -->
+  <header class="mobile-header" id="mobileHeader">
+    <a href="#" class="logo" onclick="navigateTo('accueil'); return false;">
+      <span class="logo-icon">🎸</span>
+      <span>UltraBasse</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+  </header>
+
+  <!-- ========== OVERLAY ========== -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ========== APP WRAPPER ========== -->
+  <div class="app-wrapper">
+
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="#" class="logo" onclick="navigateTo('accueil'); return false;">
+          <span class="logo-icon">🎸</span>
+          <span>
+            UltraBasse
+            <span class="logo-sub">ACADEMY</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-link active" data-page="accueil" onclick="navigateTo('accueil')">
+          <span class="nav-icon">🏠</span> Accueil
+        </button>
+        <button class="nav-link" data-page="cours" onclick="navigateTo('cours')">
+          <span class="nav-icon">🎬</span> Cours gratuits
+        </button>
+        <a class="nav-link" href="https://abrahamberne.com/coaching.html" target="_blank" rel="noopener">
+          <span class="nav-icon">📚</span> Formations
+        </a>
+        <a class="nav-link" href="https://abrahamberne.com/coaching" target="_blank" rel="noopener">
+          <span class="nav-icon">🎯</span> Coaching
+        </a>
+        <a class="nav-link" href="https://abrahamberne.com/coaching.html" target="_blank" rel="noopener">
+          <span class="nav-icon">🛒</span> Boutique
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        © UltraBasse Academy
+      </div>
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-content" id="mainContent">
+
+      <!-- ===== PAGE ACCUEIL ===== -->
+      <section id="page-accueil" class="page-section active">
+
+        <div class="hero">
+          <h1>Apprends la guitare basse <span class="accent">à ton rythme</span></h1>
+          <p>Développe ta technique et progresse vers un niveau professionnel.</p>
+        </div>
+
+        <!-- LECTEUR VIDÉO CENTRAL (taille inchangée) -->
+        <div class="video-section">
+          <div class="video-container" id="videoContainer"></div>
+        </div>
+
+        <!-- Infos leçon SOUS le lecteur -->
+        <div class="lesson-info">
+          <div class="lesson-meta">
+            <!-- Badge et texte supprimés -->
+          </div>
+          <h2 class="lesson-title" id="lessonTitle">Découvrir la guitare basse</h2>
+          <p class="lesson-desc" id="lessonDesc">Premiers pas avec l'instrument, posture et découverte des sons.</p>
+        </div>
+
+        <!-- Navigation précédent / suivant -->
+        <div class="lesson-nav">
+          <button class="btn btn-secondary" id="btnPrev" onclick="prevLesson()">← LEÇON PRÉCÉDENTE</button>
+          <button class="btn btn-secondary" id="btnNext" onclick="nextLesson()">LEÇON SUIVANTE →</button>
+        </div>
+
+        <!-- GROS BOUTON COACHING -->
+        <div class="coaching-block">
+          <a href="https://abrahamberne.com/coaching" target="_blank" rel="noopener" class="btn btn-coaching">
+            🚀 ON TRAVAILLE ENSEMBLE
+          </a>
+          <p class="coaching-caption">
+            Les élèves qui deviennent des <span class="emph">Bassistes professionnels</span> en moins de 90 jours, aiment travailler directement avec moi et ont pris au moins une ou plusieurs de mes formations.
+            <span class="strong">Clique sur le bouton👆</span>
+          </p>
+        </div>
+
+        <!-- BOUTON BOUTIQUE -->
+        <div class="shop-block">
+          <a href="https://abrahamberne.com/coaching.html" target="_blank" rel="noopener" class="btn btn-shop">
+            ACCÉDER À LA BOUTIQUE
+          </a>
+        </div>
+      </section>
+
+      <!-- ===== PAGE COURS GRATUITS — ACCORDÉON ===== -->
+      <section id="page-cours" class="page-section">
+        <div class="hero">
+          <h1>Cours <span class="accent">gratuits</span></h1>
+          <p>11 leçons pour débuter et progresser. Cliquez sur une leçon pour l'ouvrir.</p>
+        </div>
+
+        <div class="accordion" id="accordion"></div>
+
+        <!-- GROS BOUTON COACHING -->
+        <div class="coaching-block" style="margin-top: 36px;">
+          <a href="https://abrahamberne.com/coaching" target="_blank" rel="noopener" class="btn btn-coaching">
+            🚀 ON TRAVAILLE ENSEMBLE
+          </a>
+          <p class="coaching-caption">
+            Les élèves qui deviennent des <span class="emph">Bassistes professionnels</span> en moins de 90 jours, aiment travailler directement avec moi et ont pris au moins une ou plusieurs de mes formations.
+            <span class="strong">Clique sur le bouton👆</span>
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale" target="_blank" rel="noopener">Mentions légales</a>
+      <a href="https://abrahamberne1.github.io/ultrabasse/music/mentionlegale" target="_blank" rel="noopener">Politique de confidentialité</a>
+      <a href="https://abrahamberne.com/coaching" target="_blank" rel="noopener">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       CONFIGURATION CENTRALE
+       ============================================================ */
+    const APP_CONFIG = {
+      name: "UltraBasse Academy",
+      coachingUrl: "https://abrahamberne.com/coaching",
+      formationsUrl: "https://abrahamberne.com/boutique.html",
+      shopUrl: "https://abrahamberne.com/boutique.html",
+      legalUrl: "https://abrahamberne1.github.io/ultrabasse/music/mentionlegale",
+      privacyUrl: "https://abrahamberne1.github.io/ultrabasse/music/mentionlegale",
+      contactUrl: "https://abrahamberne.com/coaching"
+    };
+
+    /* ============================================================
+       DONNÉES DES 11 COURS GRATUITS
+       ------------------------------------------------------------
+       ⚠️ REMPLACEZ LES VALEURS "youtubeUrl" PAR VOS VRAIS LIENS.
+       ============================================================ */
+    const LESSONS = [
+      { id: 1,  title: "Jour 1 : Déplace-toi sur toute la guitare basse", youtubeUrl: "https://youtu.be/2EgJxcEr4CQ", description: "Apprends à te repérer et à te déplacer avec aisance sur l'ensemble du manche de la basse." },
+      { id: 2,  title: "Jour 2 : Les bases pour bien jouer",              youtubeUrl: "https://youtu.be/baoHcP-oif8", description: "Les fondamentaux techniques et posturaux pour poser des bases solides et jouer sans tension." },
+      { id: 3,  title: "Jour 3 : Comment jouer ta première chanson",      youtubeUrl: "https://youtu.be/6hE6VkTNnac", description: "Mets en pratique tes premiers acquis en jouant une chanson simple de bout en bout." },
+      { id: 4,  title: "Jour 4 : le secret pour devenir rapide",          youtubeUrl: "https://youtu.be/hwP3UnX8RTo", description: "Découvre la méthode efficace pour gagner en vitesse et en précision à la basse." },
+      { id: 5,  title: "Jour 5 : Le carré pentatonique (important à connaître pour improviser)", youtubeUrl: "https://youtu.be/-_Ter1LqNiY", description: "Maîtrise le carré pentatonique, un outil indispensable pour tes premières improvisations." },
+      { id: 6,  title: "Jour 6 : Comment jouer la salsa et tous les autres styles latinos", youtubeUrl: "https://youtu.be/tZTpuajJYv4", description: "Plonge dans les rythmes latinos et apprends à jouer la salsa avec un groove authentique." },
+      { id: 7,  title: "Jour 7 : Comment jouer le blues à la basse (intro)", youtubeUrl: "https://youtu.be/8qqHHssi-88", description: "Une introduction au blues à la basse pour découvrir les plans et le feeling de ce style." },
+      { id: 8,  title: "Jour 8 : Le Reggae à la Basse (intro)",           youtubeUrl: "https://youtu.be/8CIFSMgAAbs", description: "Initie-toi au reggae et à ses lignes de basse profondes et hypnotiques." },
+      { id: 9,  title: "Jour 9 : Comment jouer à la louange intro",       youtubeUrl: "https://youtu.be/OHkrquFhUUQ", description: "Découvre comment accompagner la musique de louange avec des lignes de basse adaptées." },
+      { id: 10, title: "Jour 10 : L'improvisation à la Basse intro",      youtubeUrl: "https://youtu.be/bBH1g8RJDiM", description: "Fais tes premiers pas en improvisation et apprends à créer des lignes spontanées." },
+      { id: 11, title: "Jour 11 : Les 4 accords à connaître à la guitare Basse", youtubeUrl: "https://youtu.be/16JYR27ctQw", description: "Les quatre accords essentiels qui te permettront de jouer d'innombrables morceaux." }
+    ];
+
+    let currentLessonIndex = 0;
+
+    /* ============================================================
+       NAVIGATION ENTRE PAGES
+       ============================================================ */
+    function navigateTo(page) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('page-' + page);
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      const activeLink = document.querySelector(`.nav-link[data-page="${page}"]`);
+      if (activeLink) activeLink.classList.add('active');
+
+      closeMobileMenu();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ============================================================
+       LECTEUR VIDÉO
+       ============================================================ */
+    function loadLesson(index) {
+      if (index < 0 || index >= LESSONS.length) return;
+      currentLessonIndex = index;
+      const lesson = LESSONS[index];
+
+      document.getElementById('lessonTitle').textContent = lesson.title;
+      document.getElementById('lessonDesc').textContent = lesson.description;
+
+      const container = document.getElementById('videoContainer');
+      if (lesson.youtubeUrl && lesson.youtubeUrl.trim() !== '') {
+        const videoId = extractYouTubeId(lesson.youtubeUrl);
+        if (videoId) {
+          container.innerHTML = `<iframe 
+            src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1" 
+            title="${lesson.title.replace(/"/g, '&quot;')}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>`;
+        } else {
+          container.innerHTML = `<div class="video-placeholder">
+            <span class="icon">⚠️</span>
+            <p>Le lien YouTube de cette leçon n'est pas encore configuré ou est invalide.</p>
+          </div>`;
+        }
+      } else {
+        container.innerHTML = `<div class="video-placeholder">
+          <span class="icon">🎬</span>
+          <p>La vidéo « ${lesson.title} » n'est pas encore disponible.</p>
+          <p style="font-size:0.8rem;opacity:0.7;">Ajoutez son lien YouTube dans le tableau LESSONS pour l'afficher.</p>
+        </div>`;
+      }
+
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      btnPrev.disabled = (index === 0);
+      btnNext.disabled = (index === LESSONS.length - 1);
+      btnPrev.classList.toggle('disabled', index === 0);
+      btnNext.classList.toggle('disabled', index === LESSONS.length - 1);
+    }
+
+    function prevLesson() {
+      if (currentLessonIndex > 0) loadLesson(currentLessonIndex - 1);
+    }
+    function nextLesson() {
+      if (currentLessonIndex < LESSONS.length - 1) loadLesson(currentLessonIndex + 1);
+    }
+
+    function extractYouTubeId(url) {
+      if (!url) return null;
+      const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+        /^([a-zA-Z0-9_-]{11})$/
+      ];
+      for (const p of patterns) {
+        const m = url.match(p);
+        if (m) return m[1];
+      }
+      return null;
+    }
+
+    /* ============================================================
+       ACCORDÉON DES COURS
+       ============================================================ */
+    function renderAccordion() {
+      const acc = document.getElementById('accordion');
+      if (!acc) return;
+
+      acc.innerHTML = LESSONS.map((lesson, i) => {
+        const num = String(lesson.id).padStart(2, '0');
+
+        return `
+          <div class="accordion-item" data-index="${i}">
+            <button class="accordion-header" onclick="toggleAccordion(${i})" aria-expanded="false">
+              <span class="acc-num">${num}</span>
+              <span class="acc-main">
+                <span class="acc-title">${lesson.title}</span>
+              </span>
+              <span class="acc-chevron">▾</span>
+            </button>
+            <div class="accordion-body">
+              <div class="acc-content">
+                <p class="acc-desc">${lesson.description}</p>
+                <div class="acc-actions">
+                  <button class="btn btn-primary" onclick="openLessonFromAccordion(${i})">
+                    ▶ VOIR LA LEÇON
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleAccordion(index) {
+      const items = document.querySelectorAll('.accordion-item');
+      items.forEach((item, i) => {
+        const header = item.querySelector('.accordion-header');
+        if (i === index) {
+          const isOpen = item.classList.contains('open');
+          if (isOpen) {
+            item.classList.remove('open');
+            header.setAttribute('aria-expanded', 'false');
+          } else {
+            item.classList.add('open');
+            header.setAttribute('aria-expanded', 'true');
+          }
+        } else {
+          item.classList.remove('open');
+          header.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    function openLessonFromAccordion(index) {
+      navigateTo('accueil');
+      setTimeout(() => {
+        loadLesson(index);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 120);
+    }
+
+    /* ============================================================
+       MENU MOBILE
+       ============================================================ */
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    function openMobileMenu() {
+      sidebar.classList.add('open');
+      overlay.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        sidebar.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+      });
+    }
+    if (overlay) overlay.addEventListener('click', closeMobileMenu);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebar.classList.contains('open')) closeMobileMenu();
+    });
+
+    document.querySelectorAll('.sidebar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        setTimeout(closeMobileMenu, 50);
+      });
+    });
+
+    /* ============================================================
+       INITIALISATION
+       ============================================================ */
+    document.addEventListener('DOMContentLoaded', () => {
+      loadLesson(0);
+      renderAccordion();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 860) closeMobileMenu();
+    });
+  </script>
+</body>
+</html>
